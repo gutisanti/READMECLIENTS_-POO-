@@ -57,8 +57,8 @@
 
 | Paso              | Método                       | Responsable |
 |-------------------|------------------------------|-------------|
-| Registrar jugador | registrar_jugador(nombre)    | Blackjack   |
-| Crear jugador     | \_\_init\_\_(nombre, fichas) | Jugador     |
+| Actualizar informacion del cliente | actualizar_informacion_cliente()    | Sistema   |
+| Mostrar mensaje de confirmacion     |mostrar_mensaje_confirmacion()| Sistema     |
 
 ## Requisitos funcionales
 
@@ -77,8 +77,9 @@
 
 | Paso              | Método                       | Responsable |
 |-------------------|------------------------------|-------------|
-| Registrar jugador | registrar_jugador(nombre)    | Blackjack   |
-| Crear jugador     | \_\_init\_\_(nombre, fichas) | Jugador     |
+| Registrar compra | registrar_compra()    | Sistema   |
+| Actualizar historial de compras   | actualizar_historial_compras() | Sistema     |
+|Mostrar un resumen de la compra| mostrar_resumen_compra()|Sistema|
 
 
 
@@ -95,8 +96,8 @@
 
 | Paso              | Método                       | Responsable |
 |-------------------|------------------------------|-------------|
-| Registrar jugador | registrar_jugador(nombre)    | Blackjack   |
-| Crear jugador     | \_\_init\_\_(nombre, fichas) | Jugador     |
+| Mostrar historial de compras | mostrar_historial_compra()   | Sistema   |
+
 
 
 
@@ -114,8 +115,8 @@
 
 | Paso              | Método                       | Responsable |
 |-------------------|------------------------------|-------------|
-| Registrar jugador | registrar_jugador(nombre)    | Blackjack   |
-| Crear jugador     | \_\_init\_\_(nombre, fichas) | Jugador     |
+| Almacenar intereses y preferencias | almacenar_intereses_preferencias()  | Sistema   |
+| Ofrecer recomendaciones personalizadas   | ofrecer_recomendaciones_pesonalizadas() | Sistema     |
 
 
 
@@ -133,5 +134,5 @@
 
 | Paso              | Método                       | Responsable |
 |-------------------|------------------------------|-------------|
-| Registrar jugador | registrar_jugador(nombre)    | Blackjack   |
-| Crear jugador     | \_\_init\_\_(nombre, fichas) | Jugador     |
+| Eliminar perfil de cliente | eliminar_perfil_cliente()    | Sistema   |
+| Mostrar mensajen de confirmacion    | mostrar_mensaje_confirmacion_eliminacion() | Sistema    |
