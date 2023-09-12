@@ -6,10 +6,10 @@
 |:----------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Resumen** 	   |  El sistema debe permitir a los empleados de la concesionaria registrar nuevos clientes en la base de datos. 	                                                                                                                        |
 | **Entrada** 	   | 
-| - Nombre del cliente.|
-| - Dirección de correo electrónico.|
-| - Número de teléfono.|
-| - Información adicional (?).|                                                                                                                |
+|- Nombre del cliente.|
+|- Dirección de correo electrónico.|
+|- Número de teléfono.|
+|- Información adicional (?). |                                                                                                               |
 | **Resultado** 	 | 1. El sistema muestra la información del cliente correspondiente.<br>2.  Asigna un número de cliente único.<br>3.  Muestra un mensaje de confirmación de registro.  |
 
 
