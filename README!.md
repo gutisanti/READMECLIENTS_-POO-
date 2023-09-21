@@ -133,3 +133,111 @@
 |-------------------|------------------------------|-------------|
 | Eliminar perfil de cliente | eliminar_perfil_cliente()    | Sistema   |
 | Mostrar mensajen de confirmacion    | mostrar_mensaje_confirmacion_eliminacion() | Sistema    |
+////////////////////////////////////////
+class Cliente:
+    def __init__(self, nombre, correo, telefono, info_adicional=None):
+        self.nombre = nombre
+        self.correo = correo
+        self.telefono = telefono
+        self.info_adicional = info_adicional
+        self.numero_cliente = None
+
+    def asignar_numero_cliente(self, numero_cliente):
+        self.numero_cliente = numero_cliente
+
+    def mostrar_informacion(self):
+        return f"Cliente {self.numero_cliente}: Nombre - {self.nombre}, Correo - {self.correo}, Teléfono - {self.telefono}, Info Adicional - {self.info_adicional}"
+
+    def actualizar_informacion(self, nombre=None, correo=None, telefono=None, info_adicional=None):
+        if nombre:
+            self.nombre = nombre
+        if correo:
+            self.correo = correo
+        if telefono:
+            self.telefono = telefono
+        if info_adicional is not None:
+            self.info_adicional = info_adicional
+
+class Compra:
+    def __init__(self, cliente, detalles_compra):
+        self.cliente = cliente
+        self.detalles_compra = detalles_compra
+
+class Concesionaria:
+    def __init__(self):
+        self.clientes = []
+        self.numero_cliente_actual = 1
+        self.compras = []
+
+    def registrar_cliente(self, nombre, correo, telefono, info_adicional=None):
+        cliente = Cliente(nombre, correo, telefono, info_adicional)
+        cliente.asignar_numero_cliente(self.numero_cliente_actual)
+        self.numero_cliente_actual += 1
+        self.clientes.append(cliente)
+        return f"Cliente {cliente.numero_cliente} registrado con éxito."
+
+    def buscar_cliente(self, numero_cliente=None, nombre_cliente=None):
+        if numero_cliente:
+            for cliente in self.clientes:
+                if cliente.numero_cliente == numero_cliente:
+                    return cliente
+        elif nombre_cliente:
+            for cliente in self.clientes:
+                if cliente.nombre == nombre_cliente:
+                    return cliente
+        return None
+
+    def actualizar_informacion_cliente(self, numero_cliente, nombre=None, correo=None, telefono=None, info_adicional=None):
+        cliente = self.buscar_cliente(numero_cliente=numero_cliente)
+        if cliente:
+            cliente.actualizar_informacion(nombre, correo, telefono, info_adicional)
+            return f"Información de cliente {cliente.numero_cliente} actualizada con éxito."
+        else:
+            return "Cliente no encontrado."
+
+    def registrar_compra(self, cliente, detalles_compra):
+        compra = Compra(cliente, detalles_compra)
+        self.compras.append(compra)
+        return "Compra registrada con éxito."
+
+    def historial_compras_cliente(self, numero_cliente, nombre_cliente=None):
+        cliente = self.buscar_cliente(numero_cliente=numero_cliente, nombre_cliente=nombre_cliente)
+        if cliente:
+            historial = [compra.detalles_compra for compra in self.compras if compra.cliente == cliente]
+            return historial
+        else:
+            return "Cliente no encontrado."
+
+    def gestion_intereses_preferencias(self, numero_cliente, intereses_preferencias):
+        cliente = self.buscar_cliente(numero_cliente=numero_cliente)
+        if cliente:
+            # Aquí puedes implementar la lógica para gestionar intereses y preferencias del cliente.
+            return f"Intereses y preferencias de cliente {cliente.numero_cliente} actualizados con éxito."
+        else:
+            return "Cliente no encontrado."
+
+    def eliminar_cliente(self, numero_cliente, confirmacion_eliminacion):
+        cliente = self.buscar_cliente(numero_cliente=numero_cliente)
+        if cliente:
+            if confirmacion_eliminacion:
+                self.clientes.remove(cliente)
+                return f"Cliente {cliente.numero_cliente} eliminado de la base de datos."
+            else:
+                return "Confirmación de eliminación requerida."
+        else:
+            return "Cliente no encontrado."
+
+    def enviar_notificacion(self, tipo_notificacion, mensaje, destinatarios):
+        # Aquí puedes implementar la lógica para enviar notificaciones a los clientes.
+        return "Notificación enviada con éxito."
+
+# Ejemplo de uso
+concesionaria = Concesionaria()
+print(concesionaria.registrar_cliente("Juan", "juan@example.com", "123-456-7890"))
+print(concesionaria.buscar_cliente(numero_cliente=1).mostrar_informacion())
+print(concesionaria.actualizar_informacion_cliente(1, nombre="Juan Pérez"))
+print(concesionaria.buscar_cliente(numero_cliente=1).mostrar_informacion())
+print(concesionaria.registrar_compra(concesionaria.buscar_cliente(numero_cliente=1), "Modelo: Sedán, Precio: $20,000"))
+print(concesionaria.historial_compras_cliente(numero_cliente=1))
+print(concesionaria.gestion_intereses_preferencias(1, "SUV, Marca: Toyota"))
+print(concesionaria.eliminar_cliente(1, confirmacion_eliminacion=True))
